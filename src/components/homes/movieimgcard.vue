@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card card-inf">
 
     <img class="card-img" :src="imgsrcdeafult" alt="" />
 
@@ -72,7 +72,7 @@ export default {
   padding: 10px;
   height: 350px;
 }
-.card:hover {cursor: pointer; transform: scale(1.06);}
+.card-inf:hover {cursor: pointer; transform: scale(1.06);}
 .info {
   z-index: 12;
 
