@@ -8,10 +8,11 @@
     </div>
     <div class="imdb-conta">
         <h5 class="meksi10-h5">{{ releasedate }}</h5>
-        <div class="imdb-vatore circle-border">{{ this.voteaverage.toString().substring(0,3)}}</div>
+        <div :id="imdb" class="imdb-vatore circle-border">{{ this.voteaverage.toString().substring(0,3)}}</div>
     </div>
     
   </div>
+ 
 </template>
 
 <script>
@@ -21,11 +22,12 @@ export default {
       show: false,
       cardvue: "cardhidden",
       yayim_tarih:"",
-      imgsrcdeafult: "https://image.tmdb.org/t/p/w500"+this.imgsrc
+      imgsrcdeafult: "https://image.tmdb.org/t/p/w500"+this.imgsrc,
+      imdb:"imdb"+this.imd
   
     };
   },
-  props:["imgsrc","originaltitle","releasedate","voteaverage"],
+  props:["imgsrc","originaltitle","releasedate","voteaverage","imd"],
   created() {
   },
   methods: {
@@ -70,7 +72,7 @@ export default {
 .card {
   position: relative;
   padding: 10px;
-  height: 350px;
+
 }
 .card-inf:hover {cursor: pointer; transform: scale(1.06);}
 .info {

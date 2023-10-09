@@ -20,17 +20,24 @@
     <br />
 
 
-
-    <div id="card_goster" class="d-flex flex-column">
-        
-    </div>
     <div
       id="tablo"
       v-if="tablostate"
-      class="container d-flex justify-content-center align-items-center flex-wrap Home-container"
-    >
+      class="container d-flex justify-content-center align-items-center flex-wrap Home-container">
+<!-- detay info alanı-->
+<div  class="d-flex flex-column card-info-click" :class="pop_up">
+  <div class="card-info-click-btns">
+    <button class="btn-close" @click="pop_up='gizle'"></button>
+    <button class="btn-add-hover">+</button>
+  </div>
+  <div id="pop">
+    
+  </div>
+  <div v-if="pop_up_info">{{ info_txt }}</div>
+</div>
+
       <card
-        @click="card_datay(index, $event)"
+        @click="card_datay(index, $event,movies.overv[index])"
         :class="movies.detay.boyut"
         class="m-2"
         v-for="(item, index) in movies.backdrop_path"
@@ -40,6 +47,7 @@
         :originaltitle="movies.original_title[index]"
         :releasedate="movies.release_date[index]"
         :voteaverage="movies.vote_average[index]"
+        :imd="index"
       ></card>
     </div>
     <button class="btn btn-danger w-100" @click="movie_sayfa_getir_BTN()">
@@ -58,7 +66,9 @@ import { options, moviegetir } from "../test.js";
 export default {
   data() {
     return {
-      card_wiev: true,
+      pop_up:"gizle",
+      pop_up_info:false,
+      info_txt:"",
       tablostate: true,
       checkbox_gelen_konu_id: "",
       durumKapatBtn: "gizle",
@@ -71,6 +81,7 @@ export default {
         release_date: [],
         vote_average: [],
         cıkıstarih: [],
+        overv:[],
         movietur: "",
         konular: {
           id: [],
@@ -140,6 +151,8 @@ export default {
                 //tüm bilgiler burada elemen içinde
                 if (key === "results") {
                   for (let index = 0; index < kac_aadet_gelsin; index++) {
+                  console.log(gelenObje["results"][index]["overview"]);
+                    this.movies.overv.push(gelenObje["results"][index]["overview"])
                     this.movies.backdrop_path.push(
                       gelenObje["results"][index].backdrop_path
                     );
@@ -181,6 +194,7 @@ export default {
     türSecimi_Getir_BTN(gelen_tür, tur_name = null) {
       /*Filmler Populer,Keşfet,TV populer olarak ayırlış durumda seçim yapılıyor */
       this.secilen_tür_listesi_name = tur_name;
+      this.secilen_tür__name=tur_name
       this.secilen_tur_global = gelen_tür;
       this.movies.backdrop_path = [];
       this.movies.vote_average = [];
@@ -218,7 +232,8 @@ export default {
                     this.movies.release_date.push(
                       gelenObje["results"][index].first_air_date
                     );
-                  } else {
+                  } 
+                  else {
                     this.movies.original_title.push(
                       gelenObje["results"][index].original_title
                     );
@@ -261,7 +276,35 @@ export default {
         })
         .catch((err) => console.error(err));
     },
-   
+   card_datay(idnumber,nesne,aciklama)
+   {
+    
+    this.pop_up="goster"
+    const tablo=document.getElementById("pop")
+    tablo.innerHTML=""
+    
+
+    const copy=document.getElementById(idnumber)
+    let kopyala=copy.cloneNode(true)
+    kopyala.style.height="none"
+    kopyala.classList.remove("card-inf")
+ 
+    const overvie=document.createElement("div")
+    overvie.style.fontSize="16px"
+    
+
+   if(aciklama === ""){ 
+    aciklama="Bilgi Bulunamadı"
+  }
+  overvie.innerHTML=aciklama
+    kopyala.appendChild(overvie)
+    tablo.appendChild(kopyala)
+
+  
+
+
+
+   },
    
    
   },
@@ -269,25 +312,63 @@ export default {
 </script>
 
 <style scoped>
-.s{
-    width: 120px !important;
+#pop{
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: #fed32f 2px solid;
+  border-radius: 5px;
+  
 }
-.btn-op{
-    border: #fed32f;
+.acikla{
+  font-size: 14px;
+  color: rebeccapurple;
+}
+.card-info-click{
+  position:fixed;
+  top: 0%;
+  z-index: 1840;
+  width: 40%;
+  height: 100%;
+}
+.card-info-click-btns{
+  display: flex;
+  justify-content: flex-end;
+
+}
+.btn-close {
+  margin: 0px 5px;
+  border: 2px solid #fed32f;
+}
+.btn-close:hover{background-color: #fed32f;}
+.btn-close:focus{ transform: scale(.9); }
+.card-info-click-btns > button:nth-child(2) {
+  position: absolute;
+    top: 40px;
+    z-index: 1950;
+    right: 0px;
+    margin-right: 15px;
+    height: 120px;
+    width: 35px;
+    border: 0px;
+    background-color:#fed32f;
+    color: #1b1b1b;
+    font-size: 24px;
+}
+.btn-add-hover:hover{
+  cursor: move;
+  background-color: #1b1b1b !important;
+  color: #fed32f !important;
+}
+.btn-add-hover:focus{
+  transform: scale(.9);
 }
 .dflex{
     display: flex;
     justify-content: space-evenly;
 }
-.btnG{
-    width: 100px;
 
-}
-.wbtn {
-  width: 100%;
-  border:0px ;
-  color: #fed32f;
-}
+
 .gizle {
   visibility: hidden;
 }
