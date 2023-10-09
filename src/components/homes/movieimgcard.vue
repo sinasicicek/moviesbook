@@ -11,17 +11,7 @@
         <h5 class="meksi10-h5">{{ releasedate }}</h5>
         <div  class="imdb-vatore circle-border">{{ this.voteaverage.toString().substring(0,3)}}</div>
     </div>
-    <!--,
-    
-      </div>
-      <div class="imdb">
-        {{imd}}
-   
- 
-
-    
-    
-    -->   </div>
+  </div>
  </div>
  
 </template>

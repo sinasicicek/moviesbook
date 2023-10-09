@@ -131,4 +131,10 @@ li:hover .container-a{
     color: #1b1b1b;
    
 }
+@media (min-width: 320px) and (max-width:425px) 
+{
+    .navbarliste{
+        flex-direction: column;
+    }
+}
 </style>

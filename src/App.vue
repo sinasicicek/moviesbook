@@ -32,5 +32,45 @@ export default {
   .respo{
     width: 100% !important;
   }
+  #pop{
+    width: 320px;
+  }
+ 
+}
+@media (min-width: 375px) and (max-width:425px) 
+{
+
+  .respo{
+    width: 100% !important;
+    padding: 20px;
+  }
+  #pop{
+    width: 320px;
+  }
+ 
+}
+@media (min-width: 425px) and (max-width:768px) 
+{
+
+  .respo{
+    width: 100% !important;
+    padding: 20px;
+  }
+  #pop{
+    width: 650px;
+  }
+ 
+}
+@media (min-width: 768px) and (max-width:1024px) 
+{
+
+  .respo{
+    width: 100% !important;
+    padding: 20px;
+  }
+  #pop{
+    width: 650px;
+  }
+ 
 }
 </style>

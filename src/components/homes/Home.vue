@@ -442,10 +442,75 @@ li:hover {
   #pop{
     flex-direction: column !important;
   }  
- .card-info-click{
-  top: 10%;
+
+ .goster{
+    left: 10%;
+  }
+  .card-info-click-btns{
+    width: 320px;
+    top: 10%;
   height: max-content;
-  width: 50%;
- }
+  }
+  .btn-add-hover{
+    right: 0px !important;
+    left:0px;
+  }
+}
+@media (min-width: 375px) and (max-width:425px) 
+{
+  #pop{
+    flex-direction: column !important;
+    width: 350px;
+  }  
+
+ .goster{
+
+  left:5%;
+  }
+  .card-info-click-btns{
+    width: 320px;
+    top: 10%;
+  height: max-content;
+  }
+  .btn-add-hover{
+    right: 0px !important;
+    left:0px;
+  }
+}
+@media (min-width: 425px) and (max-width:768px) 
+{
+    
+
+ .goster{
+
+  left:5%;
+  }
+  .card-info-click-btns{
+    width:650px;
+    top: 10%;
+    
+  }
+  .btn-add-hover{
+    right: 0px !important;
+    left:0px;
+  }
+}
+@media (min-width: 768px) and (max-width:124px) 
+{
+    
+
+ .goster{
+
+  left:5%;
+  }
+  .card-info-click-btns{
+    width:100%;
+    top: 10%;
+    
+  }
+  .btn-add-hover{
+    right: 0px !important;
+    left:0px;
+  }
 }
 </style>
