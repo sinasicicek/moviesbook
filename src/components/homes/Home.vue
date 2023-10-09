@@ -296,6 +296,7 @@ export default {
 
    const overvie=document.createElement("div")
     overvie.classList.add("respo")
+    /*verilen respo class App.vue içinden deger ataması degiştirem yapılıcak */
 
     overvie.innerHTML=aciklama
     tablo.appendChild(kopyala)
