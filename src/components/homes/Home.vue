@@ -288,17 +288,16 @@ export default {
     let kopyala=copy.cloneNode(true)
     kopyala.style.height="none"
     kopyala.classList.remove("card-inf")
- 
-    const overvie=document.createElement("div")
-    overvie.style.fontSize="16px"
-    
-
-   if(aciklama === ""){ 
+ if(aciklama === ""){ 
     aciklama="Bilgi Bulunamadı"
   }
-  overvie.innerHTML=aciklama
-    kopyala.appendChild(overvie)
+
+    const overvie=document.createElement("div")
+    overvie.style.width="50%"
+    overvie.innerHTML=aciklama
     tablo.appendChild(kopyala)
+    tablo.appendChild(overvie)
+    
 
   
 
