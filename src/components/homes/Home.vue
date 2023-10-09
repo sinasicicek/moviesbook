@@ -38,7 +38,6 @@
 
       <card
         @click="card_datay(index, $event,movies.overv[index])"
-        :class="movies.detay.boyut"
         class="m-2"
         v-for="(item, index) in movies.backdrop_path"
         :imgsrc="item"
@@ -47,7 +46,10 @@
         :originaltitle="movies.original_title[index]"
         :releasedate="movies.release_date[index]"
         :voteaverage="movies.vote_average[index]"
-        :imd="index"
+        :imd="movies.overv[index]"
+        :imdid="index"
+       
+      
       ></card>
     </div>
     <button class="btn btn-danger w-100" @click="movie_sayfa_getir_BTN()">
@@ -68,7 +70,7 @@ export default {
     return {
       pop_up:"gizle",
       pop_up_info:false,
-      info_txt:"",
+      info_txt:null,
       tablostate: true,
       checkbox_gelen_konu_id: "",
       durumKapatBtn: "gizle",
@@ -288,23 +290,22 @@ export default {
     let kopyala=copy.cloneNode(true)
     kopyala.style.height="none"
     kopyala.classList.remove("card-inf")
- if(aciklama === ""){ 
-    aciklama="Bilgi Bulunamadı"
-  }
+    if(aciklama === ""){ 
+        aciklama="Bilgi Bulunamadı"
+      }
 
-    const overvie=document.createElement("div")
-    overvie.style.width="50%"
+   const overvie=document.createElement("div")
+    overvie.classList.add("respo")
+
     overvie.innerHTML=aciklama
     tablo.appendChild(kopyala)
     tablo.appendChild(overvie)
-    
 
-  
 
 
 
    },
-   
+
    
   },
 };
@@ -320,8 +321,7 @@ export default {
   
 }
 .acikla{
-  font-size: 14px;
-  color: rebeccapurple;
+  display: block;
 }
 .card-info-click{
   position:fixed;
@@ -343,14 +343,15 @@ export default {
 .btn-close:focus{ transform: scale(.9); }
 .card-info-click-btns > button:nth-child(2) {
   position: absolute;
-    top: 40px;
+
+    top: 29px;
     z-index: 1950;
-    right: 0px;
+    right: -13px;
     margin-right: 15px;
-    height: 120px;
+    /* height: 120px; */
     width: 35px;
     border: 0px;
-    background-color:#fed32f;
+    background-color: #fed32f;
     color: #1b1b1b;
     font-size: 24px;
 }
@@ -431,5 +432,19 @@ li:hover {
 }
 .Home-container {
   height: 100%;
+}
+#respo{
+  width: 50%;
+}
+@media (min-width: 320px) and (max-width:375px) 
+{
+  #pop{
+    flex-direction: column !important;
+  }  
+ .card-info-click{
+  top: 10%;
+  height: max-content;
+  width: 50%;
+ }
 }
 </style>

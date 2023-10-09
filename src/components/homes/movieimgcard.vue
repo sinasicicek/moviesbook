@@ -1,5 +1,6 @@
 <template>
-  <div class="card card-inf">
+  <div class="d-flex">
+      <div class="cardx card-inf">
 
     <img class="card-img" :src="imgsrcdeafult" alt="" />
 
@@ -8,10 +9,20 @@
     </div>
     <div class="imdb-conta">
         <h5 class="meksi10-h5">{{ releasedate }}</h5>
-        <div :id="imdb" class="imdb-vatore circle-border">{{ this.voteaverage.toString().substring(0,3)}}</div>
+        <div  class="imdb-vatore circle-border">{{ this.voteaverage.toString().substring(0,3)}}</div>
     </div>
+    <!--,
     
-  </div>
+      </div>
+      <div class="imdb">
+        {{imd}}
+   
+ 
+
+    
+    
+    -->   </div>
+ </div>
  
 </template>
 
@@ -23,11 +34,11 @@ export default {
       cardvue: "cardhidden",
       yayim_tarih:"",
       imgsrcdeafult: "https://image.tmdb.org/t/p/w500"+this.imgsrc,
-      imdb:"imdb"+this.imd
+      imdi:"imdb"+this.imdid
   
     };
   },
-  props:["imgsrc","originaltitle","releasedate","voteaverage","imd"],
+  props:["imgsrc","originaltitle","releasedate","voteaverage","imd","imdid"],
   created() {
   },
   methods: {
@@ -46,6 +57,7 @@ export default {
 </script>
 
 <style scoped>
+.imdb{display: none;}
 .imdb-conta{position: relative;z-index: 160;
     display: flex;
     justify-content: space-between;
@@ -65,13 +77,21 @@ export default {
     border-radius: 50%;
     padding: 5px;
 }
- .card > .info {
+ .cardx > .info {
     position: absolute;
     z-index: 20;
 }
-.card {
+.cardx {
   position: relative;
   padding: 10px;
+  display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+
 
 }
 .card-inf:hover {cursor: pointer; transform: scale(1.06);}
@@ -135,6 +155,9 @@ export default {
 @media (min-width: 375px) and (max-width: 425px) {
   .card-img {
     width: 100%;
+  }
+  .card{
+    min-width: 10 !important;
   }
 }
 </style>
