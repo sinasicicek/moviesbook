@@ -66,6 +66,7 @@ export default {
     background-color: #fed32f;
     border-radius: 50%;
     padding: 5px;
+    font-size: 12px;
 }
  .cardx > .info {
     position: absolute;
@@ -81,6 +82,8 @@ export default {
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
+  
+    
 
 
 }
@@ -114,6 +117,7 @@ export default {
 .card-img {
   width: 250px;
   height: 250px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .card-img-play-btn {
@@ -141,6 +145,16 @@ export default {
 .card-img-play-btn-img:active {
   transform: scale(0.8);
 }
+@media (min-width: 320px) and (max-width: 375px) {
+  .card-img {
+    width: 100%;
+  }
+  .card{
+    min-width: 10 !important;
+  }
+  .card-container > .cardx > .card-img { display: none;}
+
+}
 
 @media (min-width: 375px) and (max-width: 425px) {
   .card-img {
@@ -149,5 +163,11 @@ export default {
   .card{
     min-width: 10 !important;
   }
+  .card-container > .cardx > .card-img { display: none;}
+}
+@media (min-width: 630px) and (max-width:768px) 
+{
+  .card-container > .cardx > .card-img { display: none;}
+
 }
 </style>

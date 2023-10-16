@@ -136,5 +136,21 @@ li:hover .container-a{
     .navbarliste{
         flex-direction: column;
     }
+    .container-a{ 
+        margin: 0px; padding: 0px;}
+   .navbarliste{
+    align-items: center;
+   }
+
+}
+@media (min-width:425px) and (max-width:768px) 
+{
+   
+    .container-a{ 
+        margin: 0px; padding: 20px;}
+   .navbarliste{
+    align-items: center;
+   }
+
 }
 </style>

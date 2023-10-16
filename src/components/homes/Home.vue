@@ -202,6 +202,7 @@ export default {
       this.movies.vote_average = [];
       this.movies.original_title = [];
       this.movies.release_date = [];
+      this.movies.overv=[];
       this.movietürgetir(20, this.movies.page_number, gelen_tür, "tr");
     },
     movietürgetir(
@@ -224,6 +225,8 @@ export default {
               console.log(element);
               if (key === "results") {
                 for (let index = 0; index < kac_aadet_gelsin; index++) {
+
+                  this.movies.overv.push(gelenObje["results"][index]["overview"])
                   this.movies.backdrop_path.push(
                     gelenObje["results"][index].backdrop_path
                   );
@@ -282,7 +285,7 @@ export default {
    {
     
     this.pop_up="goster"
-    const tablo=document.getElementById("pop")
+    const tablo=document.getElementById("pop") //ekleme yapılacak alan
     tablo.innerHTML=""
     
 
@@ -290,6 +293,7 @@ export default {
     let kopyala=copy.cloneNode(true)
     kopyala.style.height="none"
     kopyala.classList.remove("card-inf")
+    kopyala.classList.add("card-container")
     if(aciklama === ""){ 
         aciklama="Bilgi Bulunamadı"
       }
@@ -333,12 +337,17 @@ export default {
 }
 .card-info-click-btns{
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
 
 }
 .btn-close {
   margin: 0px 5px;
   border: 2px solid #fed32f;
+    position: relative;
+    top: 40px;
+    z-index: 1680;
+  
 }
 .btn-close:hover{background-color: #fed32f;}
 .btn-close:focus{ transform: scale(.9); }
@@ -430,21 +439,25 @@ li:hover {
   width: 100%;
   min-height: 100%;
   background-color: #1b1b1b;
+  padding-top: 0px !important;
 }
 .Home-container {
   height: 100%;
 }
-#respo{
+.respo{
   width: 50%;
 }
+
+
 @media (min-width: 320px) and (max-width:375px) 
 {
+  .liste-li { font-size: 12px;}
   #pop{
     flex-direction: column !important;
   }  
 
  .goster{
-    left: 10%;
+   width: 100%;
   }
   .card-info-click-btns{
     width: 320px;
@@ -455,6 +468,12 @@ li:hover {
     right: 0px !important;
     left:0px;
   }
+  .btn-close{
+    position: relative;
+    top: 40px;
+    z-index: 1680;
+  }
+
 }
 @media (min-width: 375px) and (max-width:425px) 
 {
@@ -476,32 +495,78 @@ li:hover {
     right: 0px !important;
     left:0px;
   }
+  .btn-close{
+    position: relative;
+    top: 40px;
+    z-index: 1680;
+  }
+ 
 }
-@media (min-width: 425px) and (max-width:768px) 
+@media (min-width: 425px) and (max-width:630px) 
 {
-    
-
+  .card-img{display: none;}
+  #pop{
+    flex-direction: column !important;
+   
+    max-width: 400px;
+  } 
  .goster{
 
-  left:5%;
+  left:10%;
+  width: 400px;
   }
   .card-info-click-btns{
-    width:650px;
     top: 10%;
+   
     
   }
   .btn-add-hover{
     right: 0px !important;
     left:0px;
   }
+  .btn-close{
+    position: relative;
+    top: 40px;
+    z-index: 1680;
+  }
+ 
+ 
 }
-@media (min-width: 768px) and (max-width:124px) 
+@media (min-width: 630px) and (max-width:768px) 
 {
-    
-
+  .card-img{display: none;}
+  #pop{
+    flex-direction: column !important;
+   
+    max-width: 400px;
+  } 
  .goster{
 
-  left:5%;
+  left:20%;
+  width: 400px;
+  }
+  .card-info-click-btns{
+    top: 10%;
+   
+    
+  }
+  .btn-add-hover{
+    right: 0px !important;
+    left:0px;
+  }
+  .btn-close{
+    position: relative;
+    top: 40px;
+    z-index: 1680;
+  }
+ 
+ 
+}
+@media (min-width: 768px) and (max-width:1240px) 
+{
+ .goster{
+
+  left:25%;
   }
   .card-info-click-btns{
     width:100%;
