@@ -337,7 +337,6 @@ export default {
 }
 .card-info-click-btns{
   display: flex;
-  flex-direction: column;
   justify-content: flex-end;
 
 }
@@ -562,7 +561,7 @@ li:hover {
  
  
 }
-@media (min-width: 768px) and (max-width:1240px) 
+@media (min-width: 768px) and (max-width:1024px) 
 {
  .goster{
 
@@ -571,11 +570,65 @@ li:hover {
   .card-info-click-btns{
     width:100%;
     top: 10%;
+    flex-direction: row;
     
+  }
+  .card-info-click {
+    width: 63%;
   }
   .btn-add-hover{
     right: 0px !important;
     left:0px;
   }
 }
+@media (min-width: 1024px) and (max-width:1444px) 
+{
+ .goster{
+
+  left:25%;
+  }
+  .card-info-click-btns{
+    width:100%;
+    top: 10%;
+    flex-direction: row;
+    
+  }
+  .card-info-click {
+    width: 63%;
+  }
+  .btn-add-hover{
+    right: 0px !important;
+    left:0px;
+  }
+}
+@media (min-width: 1444px) and (max-width:1920px) 
+{
+ .goster{
+
+  left:25%;
+  }
+  .card-info-click-btns{
+    width:100%;
+    top: 10%;
+    flex-direction: row;
+    
+  }
+  .card-info-click {
+    width: 63%;
+  }
+  .btn-add-hover{
+    right: 0px !important;
+    left:0px;
+  }
+}
+/**
+.card-info-click-btns{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+}
+
+*/
+
 </style>
