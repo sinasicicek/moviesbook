@@ -9,7 +9,7 @@
     </div>
     <div class="imdb-conta">
         <h5 class="meksi10-h5">{{ releasedate }}</h5>
-        <div  class="imdb-vatore circle-border">{{ this.voteaverage.toString().substring(0,3)}}</div>
+        <div  class="imdb-vatore circle-border d-flex justify-content-center align-items-center">{{ this.voteaverage.toString().substring(0,3)}}</div>
     </div>
   </div>
  </div>
@@ -61,6 +61,7 @@ export default {
     font-weight: 500;
     text-align: center;
     width: 32.44px;
+    height: 32px;
 }
 .circle-border {
     background-color: #fed32f;

@@ -19,6 +19,10 @@ export default {
 <style>
 @import './assets/bootstrap.css' 
 ;
+
+*{
+  font-family: "./assets/textfonts/BebasNeue-Regular.ttf";
+}
 .temp{
   background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
 

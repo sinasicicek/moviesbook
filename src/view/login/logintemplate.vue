@@ -6,8 +6,10 @@
       <input class="home-box-input form-control " type="password" v-model="vmodelpassw" placeholder="password">
       <br>  
       <button class="btn btn-outline-dark w-25" @click="inputcontrol(vmodelname,vmodelpassw)" >Signin</button>
+      <br>
+      <div :class="alert_class" v-if="alert_vif">{{ alert_mesaj }}</div>
+
     </div>
-   
   </div>
 </template>
 
@@ -21,27 +23,40 @@ export default {
   data(){
     return {
       vmodelname:"",
-      vmodelpassw:""
+      vmodelpassw:"",
+      alert_vif:false,
+      alert_mesaj:"",
+      alert_class:""
     }
   },
  
   methods:{
     loginBtn(name,passw){
+     
       login(name,passw)
          .then((sonuc)=>{
           if(sonuc){
-            this.$router.push("/home");
+            this.alert_class="alert-success"
+            this.bildirimGoster("Giriş Yapılıyor")
+            setTimeout(()=>{this.$router.push("/home");},2500)
           }
          })
          .catch((hata)=>{
-            this.bildirimGoster(hata.code+" mesaj")
+      
+          
          })
     },
     
-    bildirimGoster(msj){alert(msj)},
+    bildirimGoster(msj){this.alert_mesaj=msj},
+    
     inputcontrol(name,passw){
-      if(name !== "" && passw !==""){this.loginBtn(name,passw)}
-      else{this.bildirimGoster("Tüm alanları doldurunuz")}
+      this.alert_vif=true
+      if(name !== "" && passw !=="")
+      {this.loginBtn(name,passw)}
+      else{
+        this.alert_class="alert-danger"
+        this.bildirimGoster("Giriş Yapılamadi")
+      }
     },
 
    },
@@ -79,6 +94,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 .tamortasicolumn{
   display: flex;
@@ -86,12 +102,28 @@ export default {
   align-items: center;
   justify-content: center;
 }
+.alert-danger{
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  text-align: center;
+  animation: alert-danger-animation .6s both;
+}
 
-@media (min-width: 325px) and (max-width:1025px)
+@keyframes alert-danger-animation 
+{
+  0%{transform: scale(1);}
+  100%{transform: scale(1.5);}  
+}
+@media (min-width: 320px) and (max-width:2560px) 
 {
   .home-box{
+    width: 80% !important;
+    height: 100% !important;
+  }
+  .btn{
     width: 80%;
-    height: 50%;
   }
 }
+
 </style>

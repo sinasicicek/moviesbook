@@ -43,6 +43,9 @@ export default {
 </script>
 
 <style scoped>
+*{
+  font-family: "./assets/textfonts/BebasNeue-Regular.ttf","Roboto" !important;
+}
 .cubemarginleft{
     margin-left: 5px;
 }
