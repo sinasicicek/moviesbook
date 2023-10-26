@@ -2,22 +2,23 @@
   <navbar />
   <div class="Home p-5">
     <div class="container liste-tür">
+      <br />
+      <br>
       <ul class="liste-ul">
         <li
           class="liste-li"
           v-for="(item, index) in slect.url"
           :key="index"
-          id="index"
-          @click="türSecimi_Getir_BTN(item, slect.tex[index])"
-        >
+          :id="index"
+          @click="türSecimi_Getir_BTN(item, slect.tex[index],index)"
+          :class="secimTrue"
+          >
           {{ slect.tex[index] }}
         </li>
       </ul>
-      <br />
 
-      <h3 class="h3 color-white">{{ secilen_tür__name }}</h3>
     </div>
-    <br />
+  
 
 
     <div
@@ -74,7 +75,8 @@ export default {
       tablostate: true,
       checkbox_gelen_konu_id: "",
       durumKapatBtn: "gizle",
-      secilen_id: null,
+      secilen_id: 0,
+      secimTrue:"",
       movies: {
         secilen_tur_global: "movie/popular",
         page_number: 1,
@@ -105,6 +107,7 @@ export default {
   created() {
     this.popular_movie_getir();
     this.movie_konu_iceriklieri_get();
+   //this.secimYapılanTür(this.secilen_id)
   },
   beforeCreate() {
     onAuthStateChanged(auth, (user) => {
@@ -113,6 +116,8 @@ export default {
       }
     });
   },
+  mounted(){      document.getElementById(this.secilen_id).classList.add("secilenid")
+},
   components: { card, navbar },
   methods: {
     secilenTür(glen) {
@@ -153,7 +158,6 @@ export default {
                 //tüm bilgiler burada elemen içinde
                 if (key === "results") {
                   for (let index = 0; index < kac_aadet_gelsin; index++) {
-                  console.log(gelenObje["results"][index]["overview"]);
                     this.movies.overv.push(gelenObje["results"][index]["overview"])
                     this.movies.backdrop_path.push(
                       gelenObje["results"][index].backdrop_path
@@ -182,6 +186,7 @@ export default {
         )
         .catch((err) => console.error(err));
       this.card_wiev = true;
+
     },
     movie_sayfa_getir_BTN() {
       /*DAHA FAZLA GÖSTE BUTONU*/
@@ -193,7 +198,7 @@ export default {
         this.secilen_tur_global
       );
     },
-    türSecimi_Getir_BTN(gelen_tür, tur_name = null) {
+    türSecimi_Getir_BTN(gelen_tür, tur_name = null,idnumber) {
       /*Filmler Populer,Keşfet,TV populer olarak ayırlış durumda seçim yapılıyor */
       this.secilen_tür_listesi_name = tur_name;
       this.secilen_tür__name=tur_name
@@ -203,7 +208,16 @@ export default {
       this.movies.original_title = [];
       this.movies.release_date = [];
       this.movies.overv=[];
+      this.secimYapılanTür(idnumber)
       this.movietürgetir(20, this.movies.page_number, gelen_tür, "tr");
+    },
+    secimYapılanTür(id){
+      if(this.secilen_id === id ){ document.getElementById(id).classList.add("secilenid")}
+      else{
+        document.getElementById(this.secilen_id).classList.remove("secilenid")
+        document.getElementById(id).classList.add("secilenid")
+        this.secilen_id=id
+      }
     },
     movietürgetir(
       /*Filmler Populer,Keşfet,TV populer HERHANGİ BİRİ SEÇİLDİGİNDE ÇALIŞIR */
@@ -317,6 +331,14 @@ export default {
 </script>
 
 <style scoped>
+.secilenid{
+  background-color: #fed32f;
+    color: #1b1b1b;
+    border-radius: 5px;
+    transform: scale(0.7);
+    width: 185px;
+    text-align: center;
+}
 #pop{
   display: flex;
   align-items: center;
@@ -436,9 +458,9 @@ li:hover {
 }
 .Home {
   width: 100%;
-  min-height: 100%;
-  background-color: #1b1b1b;
-  padding-top: 0px !important;
+    min-height: 100%;
+    background-color: #1b1b1b;
+    padding-top: 0px !important;
 }
 .Home-container {
   height: 100%;

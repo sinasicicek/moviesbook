@@ -13,7 +13,6 @@
         <ul class="navbarliste w-75 d-flex justify-content-center">
             <li><router-link to="home" class="container-a">Movies</router-link> </li>
             <li><router-link to="/listem" class="container-a">Music</router-link></li>
-            <li><router-link to="home" class="container-a">Gaming</router-link> </li>
             <li><router-link to="/listem" class="container-a">Listem</router-link></li>
         </ul>
         <ul class="navbaruser w-25 d-flex justify-content-end">
@@ -46,6 +45,7 @@ export default {
 *{
   font-family: "./assets/textfonts/BebasNeue-Regular.ttf","Roboto" !important;
 }
+
 .cubemarginleft{
     margin-left: 5px;
 }
@@ -60,9 +60,9 @@ background-color: #fed32f;
     color: aliceblue;
 }
 .user-li{
-    width: 60px;
-    height: 60px;
-    border: #fed32f 5px solid;
+    width: 40px;
+    height: 40px;
+    border: #fed32f 1px solid;
     border-radius: 50%;
     
 }

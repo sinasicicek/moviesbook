@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex">
+  <div class="d-flex card-frame">
       <div class="cardx card-inf">
 
     <img class="card-img" :src="imgsrcdeafult" alt="" />
@@ -47,6 +47,9 @@ export default {
 </script>
 
 <style scoped>
+.card-frame{
+  max-height: 337px;
+}
 .imdb{display: none;}
 .imdb-conta{position: relative;z-index: 160;
     display: flex;
@@ -79,7 +82,7 @@ export default {
   display: flex;
     flex-direction: column;
     word-wrap: break-word;
-    background-color: #fff;
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
@@ -114,9 +117,11 @@ export default {
 .meksi10-h5{
        font-size: 12px;
        margin-left: 5px;
+       color: #2e294e;
+       font-weight: 900;
 }
 .card-img {
-  width: 250px;
+  width: 380px;
   height: 250px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
