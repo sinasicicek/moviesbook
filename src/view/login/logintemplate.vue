@@ -5,7 +5,7 @@
       <input class="home-box-input form-control " type="text" v-model="vmodelname" placeholder="Email"> <br>
       <input class="home-box-input form-control " type="password" v-model="vmodelpassw" placeholder="password">
       <br>  
-      <button class="btn btn-outline-dark w-25" @click="inputcontrol(vmodelname,vmodelpassw)" >Signin</button>
+      <button class="btn btn-outline-dark w-25 btn-cerceve" @click="inputcontrol(vmodelname,vmodelpassw)" >Signin</button>
       <br>
       <div :class="alert_class" v-if="alert_vif">{{ alert_mesaj }}</div>
 
@@ -29,7 +29,6 @@ export default {
       alert_class:""
     }
   },
- 
   methods:{
     loginBtn(name,passw){
      
@@ -64,6 +63,9 @@ export default {
 </script>
 
 <style>
+.btn-cerceve{
+  border: 2px solid #fed32f;
+}
 .home{
   height: 100vh;
 }
@@ -87,7 +89,7 @@ export default {
 .home-box-input{
   width: 80%;
   padding: 5px;
-  border: 2px solid;
+  border: 2px solid #fed32f;
   border-radius: 5px;
 }
 .tamortasi{
@@ -121,9 +123,7 @@ export default {
     width: 80% !important;
     height: 100% !important;
   }
-  .btn{
-    width: 80%;
-  }
+  
 }
 
 </style>

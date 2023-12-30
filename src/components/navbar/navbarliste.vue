@@ -11,9 +11,9 @@
             <li class="flowerBox-li"><router-link to="home">FlowerBox</router-link> </li>
         </ul>
         <ul class="navbarliste w-75 d-flex justify-content-center">
-            <li><router-link to="home" class="container-a">Movies</router-link> </li>
-            <li><router-link to="/listem" class="container-a">Music</router-link></li>
-            <li><router-link to="/listem" class="container-a">Listem</router-link></li>
+            <li><router-link to="home" class=""><buttonN :icerikName="'Movies'"/></router-link> </li>
+            <li><router-link to="/listem" class=""><buttonN :icerikName="'Music'"/></router-link></li>
+            <li><router-link to="/listem" class=""><buttonN :icerikName="'Listem'"/></router-link></li>
         </ul>
         <ul class="navbaruser w-25 d-flex justify-content-end">
             <button class="btn-close cube" @click="exit"></button>
@@ -25,8 +25,12 @@
 
 <script>
 import { auth } from '../firebaseconf';
+import buttonN from './navbarButton.vue'
 
 export default {
+    components:{
+        buttonN
+    },
     methods:{
         exit(){
             auth.signOut()
@@ -119,8 +123,7 @@ a{
 li{
     display: inline-block;
     color:white ; 
-   max-width: 200px;
-    max-height: 40px;
+  
 }
 .container-a {
     margin:0px 2rem;
